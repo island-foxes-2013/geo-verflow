@@ -1,8 +1,8 @@
 class CreateUserGeotags < ActiveRecord::Migration
   def change
     create_table :user_geotags do |t|
-      t.user :references
-      t.geotag :references
+      t.references :user
+      t.references :geotag
 
       t.timestamps
     end

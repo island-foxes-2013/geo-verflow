@@ -1,11 +1,10 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
+      t.references :question
+      t.references :user
       t.text :content
-      t.question :references
-      t.user :references
-      t.integer :upvotes
-      t.integer :downvotes
+      t.integer :upvotes, :downvotes
 
       t.timestamps
     end

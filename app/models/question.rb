@@ -1,3 +1,3 @@
 class Question < ActiveRecord::Base
-  attr_accessible :content, :downvotes, :references, :title, :upvotes
+  attr_accessible :title, :content, :upvotes, :downvotes, 
 end
