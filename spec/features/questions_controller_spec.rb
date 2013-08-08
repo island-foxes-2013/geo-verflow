@@ -1,14 +1,25 @@
 require 'spec_helper'
 
-describe QuestionsController do
-  let!(:question){ User.create(username: "a", password: "a").questions.create(title: "test", content: "test-content") }
-  let!(:question2){ User.create(username: "b", password: "b").questions.create(title: "some title", content: "some content")}
+def login(user)
+  visit signin_path
+  fill_in "user[username]", with: user.username
+  fill_in "user[password]", with: user.password
+  click_button "Sign In"
+end 
 
-  before :each do
+describe QuestionsController do
+  let(:user1) {User.create(username: "a", password: "a")}
+  let(:user2) {User.create(username: "b", password: "b")}
+
+  before  do
     visit questions_path
   end
 
   describe "questions page" do
+
+    let(:question){ user1.questions.create(title: "test", content: "test-content") }
+    let(:question2){ user2.questions.create(title: "some title", content: "some content")}
+
     it "should load page properly" do
       page.should have_content "All Questions"
     end
@@ -26,8 +37,12 @@ describe QuestionsController do
     end
 
     describe "with valid information" do
+      let!(:question){ user1.questions.create(title: "test", content: "test-content") }
+      let!(:question2){ user2.questions.create(title: "some title", content: "some content")}
+
       before do
-        
+        login(user2)
+        visit new_question_path
         fill_in "question[title]",   with: question2.title
         fill_in "question[content]", with: question2.content
         click_button "Create"
