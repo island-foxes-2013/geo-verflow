@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.references :user
       t.string :title
       t.text :content
-      t.integer :upvotes, :downvotes
+      t.integer :upvotes, :downvotes, default: 0
 
       t.timestamps
     end
