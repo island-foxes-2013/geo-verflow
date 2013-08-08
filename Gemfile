@@ -36,7 +36,7 @@ end
 
 group :development, :test do
   # gem 'pry-rails'
-  # gem 'debugger'
+  gem 'debugger'
   gem 'rspec-rails'
   # gem 'rb-fsevent'
   gem 'spork-rails'
@@ -57,4 +57,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'rspec-rails'
   # gem 'simplecov'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
