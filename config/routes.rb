@@ -3,7 +3,7 @@ GeoVerflow::Application.routes.draw do
 
   resources :users
 
-  resources :questions dogi
+  resources :questions
     resources :answers
   end
 
