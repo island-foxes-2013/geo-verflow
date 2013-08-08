@@ -5,7 +5,7 @@ describe Answer do
   it { should belong_to(:question) }
   it { should have_many(:comments) }
 
-  let(:answer) { Answer.new( content: "test_content") }
+  let(:answer) { build(:answer) }
 
   it "is an object of Answer" do
     expect(answer.class).to be Answer
@@ -14,6 +14,12 @@ describe Answer do
   it "should save" do
     expect(answer.save).to eq true
   end
+
+  it "to have content" do
+    expect(answer.content).to be
+  end
+
+  it { should respond_to(:votes) }
 
   describe 'for votes' do
     before(:each) do
@@ -35,6 +41,12 @@ describe Answer do
       it '#increment_downvote increments by one' do
         expect { answer.increment_downvote }.to change { answer.downvotes }.from(0).to(1)
       end
+
+    end
+
+    describe "#votes" do
+      subject { answer.votes }
+      it { should eq answer.upvotes - answer.downvotes }
     end
   end
 
@@ -45,7 +57,4 @@ describe Answer do
     end
   end
 
-  it "to have content" do
-    expect(answer.content).to eq "test_content" 
-  end
 end

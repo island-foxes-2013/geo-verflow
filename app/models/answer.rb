@@ -13,11 +13,25 @@ class Answer < ActiveRecord::Base
     self.downvotes = 0
   end
 
+  def votes
+    self.upvotes - self.downvotes
+  end
+
   def increment_upvote
     self.upvotes += 1
   end
 
+  def increment_upvote!
+    self.upvotes += 1
+    self.save
+  end
+
   def increment_downvote
     self.downvotes += 1
+  end
+
+  def increment_downvote!
+    self.downvotes += 1
+    self.save
   end
 end

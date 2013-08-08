@@ -5,9 +5,15 @@
 <h1>Responses: </h1>
 <ul>
   <% @answers.each do |answer| %>
-    <li><%= link_to "vote up", {url: '#'}, {class: "vote_up"} %></li>
-    <li><%= link_to "vote down", {url: '#'}, {class: "vote_down"} %></li>
-    <li><%= answer.content %></li>
+    <li>
+      <%= answer.content %>
+      <ul>
+        <li><strong>Votes: <%= answer.votes %></strong></li>
+        <li><%= link_to "vote up", {url: '#', remote: true}, {class: "vote_up"} %></li>
+        <li><%= link_to "vote down", {url: '#', remote: true}, {class: "vote_down"} %></li>
+      
+      </ul>
+    </li>
   <% end %>
 </ul>
 

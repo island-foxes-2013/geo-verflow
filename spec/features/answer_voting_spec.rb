@@ -1,10 +1,12 @@
 require 'spec_helper'
 
-describe "Answer voting", js:false do
+describe "Answer voting" do
   let(:question) { create(:question) }
   let(:answer) {create(:answer)}
+  let(:votes) {answer.upvotes - answer.downvotes}
   before(:each) do
     question.answers << answer
+    5.times { answer.increment_upvote! }
   end
 
   context "from a question page" do
@@ -16,29 +18,26 @@ describe "Answer voting", js:false do
 
     it {should have_link("vote up")}
     it {should have_link("vote down")}
+    it {should have_content(answer.votes)}
+    it {should have_content("Votes:")}
 
-    context "after clicking vote up link" do
+    context "after clicking vote up link", js:true  do
       before do
         click_link("vote up")
       end
 
       it{should have_no_link("vote up")}
+      it{should have_content("")}
 
-      it "should increment the upvote count by 1" do
-        expect { answer.increment_upvote }.to change { answer.upvotes }.by(1)
-      end
     end
 
-    context "after clicking vote down link" do
+    context "after clicking vote down link", js:true do
       before do
         click_link("vote down")
       end
 
       it{should have_no_link("vote down")}
 
-      it "should increment the downvote count by 1" do
-        expect { answer.increment_downvote }.to change { answer.downvotes }.by(1)
-      end
     end
 
 
