@@ -14,7 +14,6 @@ describe QuestionsController do
   it "should list out questions" do
     # debugger
     # save_and_open_page
-    expect(page).to have_content question.title
-    expect(page).to have_content question.content
+    expect(page).to have_link("#{question.title}", href: question_answers_path(question))
   end
 end
