@@ -2,7 +2,7 @@ class Answer < ActiveRecord::Base
   attr_accessible :content, :downvotes, :upvotes
 
   belongs_to :question
-  has_many :comments
+  has_many :comments, as: :commentable
 
   before_create :default_votes
 

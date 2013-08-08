@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Answer do
-  let(:answer) { Answer.new( content: "test_content")}
-
+  # These two tests run on the model, not an instance of the model
   it { should belong_to(:question) }
   it { should have_many(:comments) }
+
+  let(:answer) { Answer.new( content: "test_content") }
 
   it "is an object of Answer" do
     expect(answer.class).to be Answer
