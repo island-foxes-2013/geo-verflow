@@ -1,9 +1,9 @@
 GeoVerflow::Application.routes.draw do
   root :to => 'home#index'
 
-  resources :users
+  resources :users 
 
-  resources :questions dogi
+  resources :questions do
     resources :answers
   end
 
