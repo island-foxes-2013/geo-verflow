@@ -43,7 +43,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'factory_girl', require: nil
+  gem 'capybara'
+  gem 'factory_girl_rails'
   # gem 'fixture_builder', require: nil
   # gem 'border_patrol' #, require: nil
 end
