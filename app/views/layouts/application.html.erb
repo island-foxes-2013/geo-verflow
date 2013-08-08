@@ -9,7 +9,7 @@
 <body>
   <%= link_to "Home", root_path %>
 <% if current_user %>
-  <%= link_to "Profile", user_path %>
+  <%= link_to "Profile", user_path(current_user) %>
   <%= link_to "Sign out", signout_path %>
 <% else %>
   <%= link_to "Sign in", signin_path %>
