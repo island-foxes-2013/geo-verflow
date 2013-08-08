@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe "Answer voting" do
   let(:question) { create(:question) }
-  let(:answer) {create(:answer)}
+  let(:answer) {create(:answer, :question => question)}
   let(:votes) {answer.upvotes - answer.downvotes}
   before(:each) do
-    question.answers << answer
     5.times { answer.increment_upvote! }
   end
 
