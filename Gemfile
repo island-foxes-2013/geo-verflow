@@ -45,6 +45,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'faker'
   # gem 'fixture_builder', require: nil
   # gem 'border_patrol' #, require: nil
 end
