@@ -1,0 +1,7 @@
+<h1>All Questions: </h1>
+
+<% @questions.each do |question| %>
+  <%= question.title %>
+  <%= question.content %>
+  <%= link_to "Answers", question_answers_path(question) %>
+<% end %>
