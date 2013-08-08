@@ -1,5 +1,7 @@
 <h1>All Questions: </h1>
 
+<h2><%= link_to "Ask a Question", new_question_path %></h2>
+
 <% @questions.each do |question| %>
   <h3><%= question.title %></h3>
   <p><%= question.content %><p>
