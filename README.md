@@ -3,9 +3,9 @@
 ##User Stories
 
 ###As a user, I can...
-+create an account
-+log in
-+log out
-+ask a question
-+answer a question
-+upvote or downvote an answer
+<br/>create an account
+<br/>log in
+<br/>log out
+<br/>ask a question
+<br/>answer a question
+<br/>upvote or downvote an answer
