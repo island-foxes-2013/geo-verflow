@@ -8,7 +8,7 @@ describe "Answer voting" do
     5.times { answer.increment_upvote! }
   end
 
-  context "from a question page" do
+  context "from a question page", js:true do
     before do
       visit question_answers_path(question)
     end
@@ -20,13 +20,22 @@ describe "Answer voting" do
     it {should have_content(answer.votes)}
     it {should have_content("Votes:")}
 
+    it "should update vote display" do
+      expect { click_link("vote up") }.to change { page.find('.votes strong').text }
+    end
+
     context "after clicking vote up link", js:true  do
+      # let(:initial_votes) { answer.votes }
       before do
+        initial_votes = answer.votes
         click_link("vote up")
       end
 
       it{should have_no_link("vote up")}
-      it{should have_content("")}
+
+      
+      
+      # it{should have_content(initial_votes + 1)}
 
     end
 

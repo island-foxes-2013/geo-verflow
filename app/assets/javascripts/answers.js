@@ -7,8 +7,9 @@ var Votes = {
   },
 
   vote: function(event, response, status, xhr) {
-    console.log($(this));
-    $(this).remove();
+    var this_link = $(this);
+    this_link.closest('ul').find('.votes strong').text(response.votes);
+    this_link.remove();
   }
 
 }

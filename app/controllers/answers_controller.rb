@@ -10,4 +10,10 @@ class AnswersController < ApplicationController
     question.answers.create(content: params[:answer][:content])
     redirect_to question_answers_path(question)
   end
+
+  def upvote
+    answer = Answer.find(params[:id])
+    answer.increment_upvote!
+    render json: { votes: answer.votes }
+  end
 end

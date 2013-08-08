@@ -8,9 +8,9 @@
     <li>
       <%= answer.content %>
       <ul>
-        <li><strong>Votes: <%= answer.votes %></strong></li>
-        <li><%= link_to "vote up", {url: '#', remote: true}, {class: "vote_up"} %></li>
-        <li><%= link_to "vote down", {url: '#', remote: true}, {class: "vote_down"} %></li>
+        <li class="votes"><strong>Votes: <%= answer.votes %></strong></li>
+        <li><%= link_to "vote up", upvote_answer_path(answer), remote: true, class: "vote_up", method: :put %></li>
+
       
       </ul>
     </li>
