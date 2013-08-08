@@ -12,6 +12,7 @@
   <%= link_to "Profile", user_path(current_user) %>
   <%= link_to "Sign out", signout_path %>
 <% else %>
+  <%= link_to "Sign up", signup_path %>
   <%= link_to "Sign in", signin_path %>
 <% end %>
   <%= link_to "All Questions On Our Site", questions_path %>
