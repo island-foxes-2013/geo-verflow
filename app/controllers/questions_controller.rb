@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:question])
+    @question = current_user.questions.new(params[:question])
     if @question.save
       redirect_to questions_path
     else
