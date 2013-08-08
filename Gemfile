@@ -37,6 +37,7 @@ end
 group :development, :test do
   # gem 'pry-rails'
   gem 'debugger'
+  gem 'awesome_print'
   gem 'rspec-rails'
   # gem 'rb-fsevent'
   gem 'spork-rails'
