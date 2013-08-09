@@ -16,6 +16,7 @@ MVP
 
 V2 MVP
 ===
+
 - [ ] set my default location upon user signup
 - [ ] view all questions in my default location
 - [ ] create a question for a given location // (automatically geo-tags the question)

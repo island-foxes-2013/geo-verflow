@@ -58,6 +58,20 @@ describe QuestionsController do
     end
 
     describe "with invalid information" do
+      let!(:question){ user1.questions.new }
+
+      before do
+        login(user2)
+        visit new_question_path
+        click_button "Create"
+      end
+
+      it "should render errors" do
+        page.should have_content("Invalid Title/Content")
+      end
+    end
+
+    describe "with non-logged-in user" do
       before { click_button "Create" }
       
       it "should render errors" do
