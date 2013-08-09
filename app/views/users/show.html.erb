@@ -1,7 +1,9 @@
-<h1><%= current_user.username %>'s Profile</h1>
+<% if current_user %>
+  <h1><%= current_user.username %>'s Profile</h1>
 
 
 
-<h5>Your Questions</h5>
+  <h5>Your Questions</h5>
 
-<h5>Your Comments</h5>
+  <h5>Your Comments</h5>
+<% end %>
