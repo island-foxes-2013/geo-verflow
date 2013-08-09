@@ -3,18 +3,34 @@
 ##User Stories
 
 ###As a user, I can...
-<br/>create an account
-<br/>log in
-<br/>log out
-<br/>ask a question
-<br/>answer a question
-<br/>upvote or downvote an answer
-<br/>view all my questions and answers
-<br/>geo-tag a question
-<br/>topic-tag a question
-<br/>set my default location
-<br/>view questions in my chosen tag
-<br/>be notified when my question is answered
-<br/>comment on a question or answer
-<br/>see top questions in a tag
-<br/>edit/delete my question/answer
+
+MVP
+===
+- [x] create an account
+- [x] log in
+- [x] log out
+- [x] ask a question
+- [x] answer a question
+- [ ] upvote or downvote an answer
+- [x] view all my questions and answers
+
+V2 MVP
+===
+- [ ] geo-tag a question
+- [ ] geo-tag with google API, static image
+- [ ] topic-tag a question
+- [ ] view questions in my chosen tag
+
+
+V3 MVP
+=== 
+- [ ] see top questions in a tag
+- [ ] comment on a question or answer
+- [ ] set my default location
+- [ ] edit/delete my question/answer
+- [ ] geo-tag with GMaps API, dynamic to application
+
+V4 MVP
+===
+- [ ] be notified when my question is answered
+
