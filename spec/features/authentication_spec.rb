@@ -13,7 +13,7 @@ describe 'Authentication' do
       page.should have_css('form')
     end
 
-    describe 'with valid information' do
+    describe 'signin with valid information' do
 
       let(:user) { FactoryGirl.create(:user) }
       before do
@@ -32,6 +32,16 @@ describe 'Authentication' do
 
       it "should not have a link to sign in" do
         page.should_not have_link('Sign in', href: signin_path)
+      end
+
+      describe "signout" do
+        before do
+          click_link "Sign out"
+        end
+
+        it "should show us the sign in link again" do
+          page.should have_link('Sign in', href: signin_path)
+        end
       end
     end
 
