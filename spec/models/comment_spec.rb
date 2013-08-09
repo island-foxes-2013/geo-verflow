@@ -4,9 +4,6 @@ describe Comment do
   it { should belong_to(:user) }
   it { should belong_to(:commentable) }
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:question) { FactoryGirl.create(:question) }
-  let(:answer) { FactoryGirl.create(:answer) }
   let(:answer_comment) { FactoryGirl.create(:answer_comment) }
   let(:question_comment) { FactoryGirl.create(:question_comment) }
 

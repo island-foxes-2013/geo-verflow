@@ -29,4 +29,16 @@ FactoryGirl.define do
     user
     commentable_type "Answer"
   end
+
+  factory :question_vote, class: Vote do
+    votable_type "Question"
+    value 0
+    user
+  end
+
+  factory :answer_vote, class: Vote do
+    votable_type "Answer"
+    value 0
+    user
+  end
 end
