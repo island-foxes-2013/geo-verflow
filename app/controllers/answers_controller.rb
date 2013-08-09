@@ -13,7 +13,8 @@ class AnswersController < ApplicationController
 
   def upvote
     answer = Answer.find(params[:id])
-    if answer.votes.create(user: current_user)
+    vote = answer.votes.new(user: current_user)
+    if vote.save
       answer.increment_upvote!
     end
     render json: { votes: answer.vote_count }
@@ -21,7 +22,8 @@ class AnswersController < ApplicationController
 
   def downvote
     answer = Answer.find(params[:id])
-    if answer.votes.create(user: current_user)
+    vote = answer.votes.new(user: current_user)
+    if vote.save
       answer.increment_downvote!
     end
     render json: { votes: answer.vote_count }
