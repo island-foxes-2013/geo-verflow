@@ -16,19 +16,19 @@ MVP
 
 V2 MVP
 ===
-- [ ] geo-tag a question
-- [ ] geo-tag with google API, static image
-- [ ] topic-tag a question
-- [ ] view questions in my chosen tag
-
+- [ ] set my default location upon user signup
+- [ ] view all questions in my default location
+- [ ] create a question for a given location // (automatically geo-tags the question)
 
 V3 MVP
 === 
 - [ ] see top questions in a tag
 - [ ] comment on a question or answer
-- [ ] set my default location
 - [ ] edit/delete my question/answer
 - [ ] geo-tag with GMaps API, dynamic to application
+- [ ] geo-tag with google API, static image
+- [ ] topic-tag a question
+- [ ] view questions in a topic-tag
 
 V4 MVP
 ===

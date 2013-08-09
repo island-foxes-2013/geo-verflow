@@ -41,4 +41,8 @@ FactoryGirl.define do
     value 0
     user
   end
+
+  factory :geotag do
+    city_name "San Francisco"
+  end
 end
