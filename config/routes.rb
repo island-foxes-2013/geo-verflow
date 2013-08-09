@@ -17,6 +17,9 @@ GeoVerflow::Application.routes.draw do
     member do
       put :upvote
     end
+    member do
+      put :downvote
+    end
   end
 
 

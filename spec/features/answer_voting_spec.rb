@@ -18,7 +18,6 @@ describe "Answer voting" do
     it {should have_link("vote up")}
     it {should have_link("vote down")}
     it {should have_content(answer.votes)}
-    it {should have_content("Votes:")}
 
     it "should update vote display" do
       expect { click_link("vote up") }.to change { page.find('.votes strong').text }
