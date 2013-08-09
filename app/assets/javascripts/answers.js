@@ -9,12 +9,11 @@ var Votes = {
   vote: function(event, response, status, xhr) {
     var this_link = $(this);
     this_link.closest('ul').find('.votes strong').text(response.votes);
-    this_link.remove();
   }
 
 }
 
-$(function(){
+$(document).ready( function(){
   Votes.init('a.vote_up');
   Votes.init('a.vote_down');
 });

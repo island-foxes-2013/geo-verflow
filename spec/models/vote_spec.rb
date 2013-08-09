@@ -16,6 +16,13 @@ describe Vote do
       answer_vote.votable_type.should eq 'Answer'
     end
 
+    it "will not be saved if a user has voted on it previously" do
+      question_vote.save
+      expect(Vote.new(
+        user_id: question_vote.user_id,
+        votable_id: question_vote.votable_id,
+        votable_type: question_vote.votable_type).save).to eq false
+    end
   end
   
 end

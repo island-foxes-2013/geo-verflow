@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :content, :votes
+  attr_accessible :content, :vote_count
 
   belongs_to :question
   belongs_to :user
@@ -16,20 +16,20 @@ class Answer < ActiveRecord::Base
   # end
 
   # def increment_upvote
-  #   self.upvotes += 1
+  #   self.votes += 1
   # end
 
-  # def increment_upvote!
-  #   self.upvotes += 1
-  #   self.save
-  # end
+  def increment_upvote!
+    self.vote_count += 1
+    self.save
+  end
 
   # def increment_downvote
-  #   self.downvotes += 1
+  #   self.votes -= 1
   # end
 
-  # def increment_downvote!
-  #   self.downvotes += 1
-  #   self.save
-  # end
+  def increment_downvote!
+    self.vote_count -= 1
+    self.save
+  end
 end

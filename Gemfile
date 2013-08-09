@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'simplecov'
   # gem 'fixture_builder', require: nil
   # gem 'border_patrol' #, require: nil
 end
