@@ -6,6 +6,7 @@ describe Question do
 
   it { should belong_to(:user) }
   it { should have_many(:answers)}
+  it { should have_many(:votes)}
 
   it "is an object of Question" do
     expect(question.class).to be Question
@@ -21,19 +22,18 @@ describe Question do
     end
 
     context 'defaults' do
-      it "upvotes and downvotes should be zero" do
-        expect(question.upvotes).to eq 0
-        expect(question.downvotes).to eq 0
+      it "should be empty" do
+        expect(question.votes).to eq []
       end
     end
 
     context "upvotes and downvotes changing" do
       it '#increment_upvote increments by one' do
-        expect { question.increment_upvote }.to change { question.upvotes }.from(0).to(1)
+        # expect { question.upvote }.to change { question.votes }.from(0).to(1)
       end
 
       it '#increment_downvote increments by one' do
-        expect { question.increment_downvote }.to change { question.downvotes }.from(0).to(1)
+        # expect { question.downvote }.to change { question.votes }.from(0).to(-1)
       end
     end
   end

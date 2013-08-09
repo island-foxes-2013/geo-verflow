@@ -13,6 +13,15 @@ GeoVerflow::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
 
+  resources :answers, only: [] do
+    member do
+      put :upvote
+    end
+    member do
+      put :downvote
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,10 +1,11 @@
 <p>(Home Page)</p>
-
-<h1>A Random Question!</h1>
-<h2><%= @question.title %></h2>
-<p><%= @question.content %></p>
-<ul>
-  <% @question.answers.each do |answer| %>
-    <li><%= answer.content %></li>
-  <% end %>
-</ul>
+<% if @question %>
+  <h1>A Random Question!</h1>
+  <h2><%= @question.title %></h2>
+  <p><%= @question.content %></p>
+  <ul>
+    <% @question.answers.each do |answer| %>
+      <li><%= answer.content %></li>
+    <% end %>
+  </ul>
+<%end%>

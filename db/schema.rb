@@ -11,16 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807203858) do
+ActiveRecord::Schema.define(:version => 20130809005746) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.integer  "user_id"
     t.text     "content"
-    t.integer  "upvotes"
-    t.integer  "downvotes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "votes",       :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "geotags", :force => true do |t|
@@ -48,8 +56,7 @@ ActiveRecord::Schema.define(:version => 20130807203858) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.integer  "upvotes",    :default => 0
-    t.integer  "downvotes",  :default => 0
+    t.integer  "votes",      :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -73,6 +80,15 @@ ActiveRecord::Schema.define(:version => 20130807203858) do
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "value"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

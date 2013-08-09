@@ -16,7 +16,6 @@ describe QuestionsController do
   end
 
   describe "questions page" do
-
     let(:question){ user1.questions.create(title: "test", content: "test-content") }
     let(:question2){ user2.questions.create(title: "some title", content: "some content")}
 
@@ -25,6 +24,10 @@ describe QuestionsController do
     end
 
     it "should list out questions" do
+      # While q1 & q2 are initialized above, you have to "bring" them into the function here...
+      question
+      question2
+      visit questions_path # Need to refresh page so questions show up
       expect(page).to have_link("#{question.title}", href: question_answers_path(question))
     end
   end
@@ -49,6 +52,7 @@ describe QuestionsController do
       end
 
       it "should show up on the next page" do
+        p page
         expect(page).to have_link("#{question2.title}", href: question_answers_path(question2))
       end
     end

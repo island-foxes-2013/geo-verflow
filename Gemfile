@@ -37,6 +37,7 @@ end
 group :development, :test do
   # gem 'pry-rails'
   gem 'debugger'
+  gem 'awesome_print'
   gem 'rspec-rails'
   # gem 'rb-fsevent'
   gem 'spork-rails'
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'faker'
   # gem 'fixture_builder', require: nil
   # gem 'border_patrol' #, require: nil
 end
