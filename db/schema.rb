@@ -33,16 +33,8 @@ ActiveRecord::Schema.define(:version => 20130809005746) do
 
   create_table "geotags", :force => true do |t|
     t.string   "city_name"
-    t.integer  "tag_count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "question_geotags", :force => true do |t|
-    t.integer  "question_id"
-    t.integer  "geotag_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "question_topics", :force => true do |t|
@@ -54,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130809005746) do
 
   create_table "questions", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "geotag_id"
     t.string   "title"
     t.text     "content"
     t.integer  "vote_count", :default => 0
@@ -64,13 +57,6 @@ ActiveRecord::Schema.define(:version => 20130809005746) do
   create_table "topics", :force => true do |t|
     t.string   "name"
     t.integer  "tag_count"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_geotags", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "geotag_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
