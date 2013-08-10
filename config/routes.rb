@@ -2,6 +2,7 @@ GeoVerflow::Application.routes.draw do
   root :to => 'home#index'
 
   resources :users 
+  resources :geotags, only: [:new, :create, :show]
 
   resources :questions do
     resources :answers

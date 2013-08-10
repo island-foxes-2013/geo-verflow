@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   attr_accessible :title, :content, :user
   belongs_to :user
+  belongs_to :geotag
   has_many :answers
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
