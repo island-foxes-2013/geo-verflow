@@ -22,6 +22,15 @@ GeoVerflow::Application.routes.draw do
     end
   end
 
+  resources :questions, only: [] do
+    member do
+      put :upvote
+    end
+    member do
+      put :downvote
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

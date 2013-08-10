@@ -23,4 +23,22 @@ class QuestionsController < ApplicationController
       render 'new'
     end
   end
+
+  def upvote
+    question = Question.find(params[:id])
+    vote = question.votes.new(user: current_user)
+    if vote.save
+      question.increment_upvote!
+    end
+    render json: { votes: question.vote_count }
+  end
+
+  def downvote
+    question = Question.find(params[:id])
+    vote = question.votes.new(user: current_user)
+    if vote.save
+      question.increment_downvote!
+    end
+    render json: { votes: question.vote_count }
+  end
 end

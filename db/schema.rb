@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20130809005746) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.integer  "votes",      :default => 0
+    t.integer  "vote_count", :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end

@@ -2,6 +2,14 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.content %></p>
 
+<div class="question_voting">
+  <ul>
+    Votes: <li class="q_votes"><strong><%= @question.vote_count %></strong></li>
+    <li><%= link_to "upvote", upvote_question_path(@question), remote: true, class: "question_upvote", method: :put %></li>
+    <li><%= link_to "downvote", downvote_question_path(@question), remote: true, class: "question_downvote", method: :put %></li>
+  </ul>
+</div>
+
 <h1>Responses: </h1>
 <ul>
   <% @answers.each do |answer| %>

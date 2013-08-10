@@ -30,6 +30,35 @@ describe QuestionsController do
       visit questions_path # Need to refresh page so questions show up
       expect(page).to have_link("#{question.title}", href: question_answers_path(question))
     end
+
+    describe "on a question", js:true do
+      before do
+        visit question_answers_path(question)
+      end
+
+      subject{page}
+
+      it {should have_link("upvote")}
+      it {should have_link("downvote")}
+
+      context "upvote" do
+        it "should update vote display" do
+          expect do 
+            click_link("upvote")
+            sleep 1
+          end.to change{page.find('.q_votes strong').text.to_i}.by(1)
+        end
+      end
+
+      context "downvote" do
+        it "should update vote display" do
+          expect do
+            click_link("downvote")
+            sleep 1
+          end.to change{page.find('.q_votes strong').text.to_i}.by(-1)
+        end
+      end
+    end
   end
 
   describe "create a question" do
@@ -58,7 +87,6 @@ describe QuestionsController do
     end
 
     describe "with invalid information" do
-      let!(:question){ user1.questions.new }
 
       before do
         login(user2)
