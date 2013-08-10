@@ -4,9 +4,11 @@ describe Question do
 
   let(:question) { Question.new(title: "test", content: "test_content")}
 
-  it { should belong_to(:user) }
-  it { should have_many(:answers)}
-  it { should have_many(:votes)}
+  it { should belong_to :user  }
+  it { should belong_to :geotag }   
+  it { should have_many :answers }
+  it { should have_many :votes }
+
 
   it "is an object of Question" do
     expect(question.class).to be Question
