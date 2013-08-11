@@ -1,10 +1,10 @@
 <% if @question %>
-  <h1>A Random Question!</h1>
-  <h2><%= @question.title %></h2>
+  <h5>A Random Question!</h5>
+  <h2><%= @question.title %><div class="question_vote_number"><%= @question.vote_count %></div></h2>
   <p><%= @question.content %></p>
   <ul>
     <% @question.answers.each do |answer| %>
-      <li><%= answer.content %></li>
+      <li><%= answer.content %><div class="answer_vote_number"><%= answer.vote_count %></div></li>
     <% end %>
   </ul>
 <%end%>

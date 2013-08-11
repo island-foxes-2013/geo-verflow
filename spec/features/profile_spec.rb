@@ -20,11 +20,11 @@ describe 'Profile' do
 	end
 
 	it "should display Questions heading" do
-  	page.should have_content('Questions')
+  		page.should have_content('Questions')
 	end
 
 	it "should display Comments heading" do
-  	page.should have_content('Comments')
+  		page.should have_content('Answers')
 	end
 
 	it "should show my geotags" do

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.find(:all, order: "vote_count DESC")
   end
 
   def new

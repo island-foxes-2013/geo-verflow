@@ -5,8 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -14,10 +12,10 @@
   <%= link_to "Home", root_path %>
   <% if current_user %>
     <%= link_to "Profile", user_path(current_user) %>
-    <%= link_to "Sign out", signout_path %>
+    <div class="login_logout"><%= link_to "Sign out", signout_path %></div>
   <% else %>
     <%= link_to "Sign up", signup_path %>
-    <%= link_to "Sign in", signin_path %>
+    <div class="login_logout"><%= link_to "Sign in", signin_path %></div>
   <% end %>
     <%= link_to "All Questions", questions_path %>
 </div>

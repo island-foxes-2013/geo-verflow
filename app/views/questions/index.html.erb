@@ -1,7 +1,9 @@
 <h1>All Questions: </h1>
-<div><%= link_to "Ask a Question", new_question_path, class: "btn btn-primary" %></div>
+<% if current_user %>
+	<div><%= link_to "Ask a Question", new_question_path, class: "btn btn-primary" %></div>
+<% end %>
 <ul>
 	<% @questions.each do |question| %>
-	  <li><%= link_to "#{question.title}", question_answers_path(question) %></li>
+	  <li><%= link_to "#{question.title}", question_answers_path(question) %><div class="question_vote_number"><%= question.vote_count %></div></li>
 	<% end %>
 </ul>

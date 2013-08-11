@@ -2,6 +2,16 @@
   <h1><%= current_user.username %>'s Profile</h1>
 
   <h5>Your Questions:</h5>
+  <% current_user.questions.order('vote_count DESC').each do |question| %>
+ 		<ul>
+	  	<li><%= link_to "#{question.title}", question_answers_path(question) %><div class="question_vote_number"><%= question.vote_count %></div></li>
+	  </ul>
+  <% end %>
 
-  <h5>Your Comments:</h5>
+  <h5>Your Answers:</h5>
+  <ul>
+	  <% current_user.answers.order('vote_count DESC').each do |answer| %>
+	  		<li><%= answer.content %><div class="answer_vote_number"><%= answer.vote_count %></div></li>
+	  <% end %>
+	 </ul>
 <% end %>

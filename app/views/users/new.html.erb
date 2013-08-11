@@ -1,7 +1,7 @@
 <h1>Sign Up</h1>
 
 <%= form_for @user, url: { action: 'create' } do |f| %>
-<%= f.text_field :username, html: {id: "username"}%>
-<%= f.password_field :password, html: {id: "password"}%>
-<%= f.submit 'Sign Up' %>
+<%= f.text_field :username, html: {id: "username"}, placeholder: "username" %>
+<%= f.password_field :password, html: {id: "password"}, placeholder: "password" %>
+<%= f.submit 'Sign Up', class: "btn btn-primary" %>
 <% end %>

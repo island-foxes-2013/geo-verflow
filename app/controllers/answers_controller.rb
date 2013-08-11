@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   def index
     @question = Question.find_by_id(params[:question_id])
-    @answers = @question.answers
+    @answers = @question.answers.find(:all, order: "vote_count DESC")
     @answer = Answer.new
   end
 

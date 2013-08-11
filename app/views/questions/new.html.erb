@@ -1,11 +1,9 @@
-<h1>New Question</h1>
-
 <%= form_for @question do |f| %>
-	<h4>Title: </h4>
+  <h4>Title: </h4>
   <%= f.text_field :title %>
   <br>
   <h4>Content: </h4>
   <%= f.text_area :content %>
   <br>
-  <%= f.submit class: "btn btn-primary" "Create" %>
+  <%= f.submit "Ask Question", class: "btn btn-primary"%>
 <% end %>

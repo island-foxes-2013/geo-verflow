@@ -1,32 +1,38 @@
-<h3><%= @question.title %></h3>
+<h3><%= @question.title %><div class="question_vote_number"><%= @question.vote_count %></div></h3>
 <p><%= @question.content %></p>
 <p>-<%= @question.user.username %></p>
 
-<div class="question_voting">
-    <%= link_to "upvote", upvote_question_path(@question), remote: true, class: "question_upvote", method: :put %>
-    <class="q_votes"><strong><%= @question.vote_count %></strong>
-    <%= link_to "downvote", downvote_question_path(@question), remote: true, class: "question_downvote", method: :put %>
-</div>
+<% if current_user %>
+  <div class="question_voting">
+      <%= link_to "upvote", upvote_question_path(@question), remote: true, class: "question_upvote", method: :put %>
+      <class="q_votes">
+      <%= link_to "downvote", downvote_question_path(@question), remote: true, class: "question_downvote", method: :put %>
+  </div>
+<% end %>
 
 <h3>Responses: </h3>
 <ul>
   <% @answers.each do |answer| %>
     <li>
-      <%= answer.content %> -<%= answer.user.username %>
-      <ul>
-        <li class="votes"><strong><%= answer.vote_count %></strong></li>
-        <li><%= link_to "vote up", upvote_answer_path(answer), remote: true, class: "vote_up", method: :put %></li>
-        <li><%= link_to "vote down", downvote_answer_path(answer), remote: true, class: "vote_down", method: :put %></li>
-
-      
-      </ul>
+      <% if current_user %>
+        <%= answer.content %> -<%= answer.user.username %>
+        <ul>
+          <li class="votes"><div class="answer_vote_number"><%= answer.vote_count %></div></li>
+          <li><%= link_to "vote up", upvote_answer_path(answer), remote: true, class: "vote_up", method: :put %></li>
+          <li><%= link_to "vote down", downvote_answer_path(answer), remote: true, class: "vote_down", method: :put %></li>
+        </ul>
+      <% else %>
+        <%= answer.content %> -<%= answer.user.username %><div class="answer_vote_number"><%= answer.vote_count %></div>
+      <% end %>
     </li>
   <% end %>
 </ul>
 
-<h4>Submit an answer: </h4>
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.text_area :content %>
-  <br>
-  <%= f.submit "Submit Answer" %>
+<% if current_user %>
+  <h4>Submit an answer: </h4>
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.submit "Submit Answer", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
