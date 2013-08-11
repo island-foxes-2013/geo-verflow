@@ -11,7 +11,7 @@ MVP
 - [x] log out
 - [x] ask a question
 - [x] answer a question
-- [ ] upvote or downvote an answer
+- [x] upvote or downvote an answer
 - [x] view all my questions and answers
 
 V2 MVP
