@@ -1,14 +1,14 @@
 GeoVerflow::Application.routes.draw do
   root :to => 'home#index'
 
-  resources :users 
-  resources :geotags, only: [:new, :create, :show]
+  resources :users , only: [:show, :new, :create]
+  resources :geotags, only: [:create]
 
-  resources :questions do
-    resources :answers
+  resources :questions, only: [:index, :new, :create] do
+    resources :answers, only: [:index, :create]
   end
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:create]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
