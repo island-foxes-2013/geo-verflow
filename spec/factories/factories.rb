@@ -8,6 +8,7 @@ FactoryGirl.define do
 
   factory :question do
     user
+    geotag
     title { Faker::Company.bs }
     content { Faker::Lorem.paragraph }
   end
