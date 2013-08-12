@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates :username, :password, presence: true
   validates_uniqueness_of :username
 
+  # TODO-JW: check out 'has_one' instead of 'belongs_to' for :geotag
   belongs_to :geotag
   has_many :questions
   has_many :comments
