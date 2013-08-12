@@ -11,6 +11,8 @@ class QuestionsController < ApplicationController
     if current_user
       @question = current_user.questions.new(params[:question])
       if @question.save
+        @question.geotag_id = current_user.geotag_id
+        @question.save
         redirect_to questions_path
       else
         flash.now[:error] = "Invalid Title/Content"

@@ -1,4 +1,5 @@
 <h3><%= @question.title %><div class="question_vote_number"><%= @question.vote_count %></div></h3>
+<p class ='lead'><%= @question.geotag.city_name %></p>
 <p><%= @question.content %></p>
 <p>-<%= @question.user.username %></p>
 

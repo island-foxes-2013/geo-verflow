@@ -27,12 +27,8 @@ describe 'Profile' do
   		page.should have_content('Answers')
 	end
 
-	it "should show my geotags" do
-		pending
-	end
-
-	it "should show my prefered topics" do
-		pending
+	it "should show my geotag" do
+		page.should have_content('My City')
 	end
 
 end

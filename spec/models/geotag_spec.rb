@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Geotag do
   it { should validate_presence_of :city_name }
   it { should validate_uniqueness_of :city_name }
+  it { should have_many(:users) }
+  it { should have_many(:questions) }
 
   let(:geotag) { create(:geotag) }
   let(:emptygeotag) { Geotag.new }
