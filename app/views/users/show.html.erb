@@ -1,5 +1,6 @@
 <% if current_user %>
   <h1><%= current_user.username %>'s Profile</h1>
+  <p class ='lead'>My City - <%= current_user.geotag.city_name %> </p>
 
   <h5>Your Questions:</h5>
   <% current_user.questions.order('vote_count DESC').each do |question| %>

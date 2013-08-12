@@ -4,6 +4,7 @@
 <% end %>
 <ul>
 	<% @questions.each do |question| %>
+	  
 	  <li><%= link_to "#{question.title}", question_answers_path(question) %><div class="question_vote_number"><%= question.vote_count %></div></li>
 	<% end %>
 </ul>
