@@ -10,8 +10,8 @@ end
 describe QuestionsController do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:question){ user.questions.create(title: "test", content: "test-content") }
-  # let(:user1) {User.create(username: "a", password: "a")}
-  # let(:user2) {User.create(username: "b", password: "b")}
+  let(:user1) {User.create(username: "a", password: "a")}
+  let(:user2) {User.create(username: "b", password: "b")}
 
   before :each do
     visit questions_path
@@ -79,7 +79,7 @@ describe QuestionsController do
         visit new_question_path
         fill_in "question[title]",   with: question2.title
         fill_in "question[content]", with: question2.content
-        click_button "Create"
+        click_button "q_submit"
       end
 
       it "should show up on the next page" do
@@ -93,7 +93,7 @@ describe QuestionsController do
       before do
         login(user2)
         visit new_question_path
-        click_button "Create"
+        click_button "q_submit"
       end
 
       it "should render errors" do
@@ -102,7 +102,7 @@ describe QuestionsController do
     end
 
     describe "with non-logged-in user" do
-      before { click_button "Create" }
+      before { click_button "q_submit" }
       
       it "should render errors" do
         page.should have_content("Invalid")
