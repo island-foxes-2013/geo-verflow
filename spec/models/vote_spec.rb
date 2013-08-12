@@ -18,10 +18,14 @@ describe Vote do
 
     it "will not be saved if a user has voted on it previously" do
       question_vote.save
-      expect(Vote.new(
-        user_id: question_vote.user_id,
-        votable_id: question_vote.votable_id,
-        votable_type: question_vote.votable_type).save).to eq false
+      expect {
+        user = User.find(question_vote.user_id)
+        user.votes.create!(votable_id: question_vote.votable_id, votable_type: question_vote.votable_type)
+      }.to raise_error
+      # expect(Vote.new(
+      #   user_id: question_vote.user_id,
+      #   votable_id: question_vote.votable_id,
+      #   votable_type: question_vote.votable_type).save).to eq false
     end
   end
   
