@@ -32,80 +32,81 @@ describe QuestionsController do
 
   describe "a specific question" do
     before :each do
+      login(user)
       visit question_answers_path(question)
     end
 
     it "should load properly" do
-      expect(page).to have_content(question.title)
-      expect(page).to have_link("upvote")
-      expect(page).to have_link("downvote")
+      page.should have_content(question.title)
+      page.should have_link("upvote")
+      page.should have_link("downvote")
+    end
+  # end
+    context "upvote", js:true do
+      it "should update vote display" do
+        expect do 
+          click_link("upvote")
+          sleep 1
+        end.to change{page.find('.question_vote_number').text.to_i}.by(1)
+      end
+    end
+  # end
+
+    context "downvote", js:true do
+      it "should update vote display" do
+        expect do
+          click_link("downvote")
+          sleep 1
+        end.to change{page.find('.question_vote_number').text.to_i}.by(-1)
+      end
+    end
+  #   end
+  end
+
+  describe "create a question" do
+    before { visit new_question_path }
+
+    it "should land on a page that asks you to create a question" do
+      page.should have_content "Ask a question"
+    end
+
+    describe "with valid information" do
+      let!(:question){ user1.questions.create(title: "test", content: "test-content") }
+      let!(:question2){ user2.questions.create(title: "some title", content: "some content")}
+
+      before do
+        login(user2)
+        visit new_question_path
+        fill_in "question[title]",   with: question2.title
+        fill_in "question[content]", with: question2.content
+        click_button "Create"
+      end
+
+      it "should show up on the next page" do
+        p page
+        expect(page).to have_link("#{question2.title}", href: question_answers_path(question2))
+      end
+    end
+
+    describe "with invalid information" do
+
+      before do
+        login(user2)
+        visit new_question_path
+        click_button "Create"
+      end
+
+      it "should render errors" do
+        page.should have_content("Invalid Title/Content")
+      end
+    end
+
+    describe "with non-logged-in user" do
+      before { click_button "Create" }
+      
+      it "should render errors" do
+        page.should have_content("Invalid")
+      end
     end
   end
-  #   context "upvote", js:true do
-  #     it "should update vote display" do
-  #       expect do 
-  #         click_link("upvote")
-  #         sleep 1
-  #       end.to change{page.find('.question_vote_number').text.to_i}.by(1)
-  #     end
-  #   end
-  # end
-
-  #     context "downvote" do
-  #       it "should update vote display" do
-  #         expect do
-  #           click_link("downvote")
-  #           sleep 1
-  #         end.to change{page.find('.question_vote_number').text.to_i}.by(-1)
-  #       end
-  #     end
-  #   end
-  # end
-
-  # describe "create a question" do
-  #   before { visit new_question_path }
-
-  #   it "should land on a page that asks you to create a question" do
-  #     page.should have_content "New Question"
-  #   end
-
-  #   describe "with valid information" do
-  #     let!(:question){ user1.questions.create(title: "test", content: "test-content") }
-  #     let!(:question2){ user2.questions.create(title: "some title", content: "some content")}
-
-  #     before do
-  #       login(user2)
-  #       visit new_question_path
-  #       fill_in "question[title]",   with: question2.title
-  #       fill_in "question[content]", with: question2.content
-  #       click_button "Create"
-  #     end
-
-  #     it "should show up on the next page" do
-  #       p page
-  #       expect(page).to have_link("#{question2.title}", href: question_answers_path(question2))
-  #     end
-  #   end
-
-  #   describe "with invalid information" do
-
-  #     before do
-  #       login(user2)
-  #       visit new_question_path
-  #       click_button "Create"
-  #     end
-
-  #     it "should render errors" do
-  #       page.should have_content("Invalid Title/Content")
-  #     end
-  #   end
-
-  #   describe "with non-logged-in user" do
-  #     before { click_button "Create" }
-      
-  #     it "should render errors" do
-  #       page.should have_content("Invalid")
-  #     end
-  #   end
-  # end
 end
